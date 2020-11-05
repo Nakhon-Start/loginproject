@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import 'bmi.dart';
 import 'login.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -22,26 +23,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("My Firebase App", style: TextStyle(color: Colors.white)),
-            actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.exit_to_app),
-              color: Colors.white,
-              onPressed: () {
-                signOut(context);
-              })
-        ],
-        ),
-
-        body: Container(
-            child: Center(
-                child:
-                Column(mainAxisSize: MainAxisSize.min,children: <Widget>[
-                  Text("Hello", style: TextStyle(fontSize: 26)),
-                  Text(widget.user.email, style: TextStyle(fontSize: 16)),
-                ]))));
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
+      home: BmiPage(),
+      debugShowCheckedModeBanner: false,
+    );
   }
   void signOut(BuildContext context) {
     _auth.signOut();
